@@ -11,31 +11,45 @@ Requirements :-
 3) MySQL or another RDBMS (configurable)
 4) Postman or cURL (recommended for testing APIs)
 
-# API Endpoints
+### API Endpoints ###
 
-1. Category APIs
+# Category APIs
 Method	Endpoint	Description
 1) GET	/api/categories?page={page}	Get paginated list of categories
-POST	/api/categories	Create a new category
-GET	/api/categories/{id}	Get category by ID
-PUT	/api/categories/{id}	Update category by ID
-DELETE	/api/categories/{id}	Delete category by ID
+   
+2) POST	/api/categories	Create a new category
+   
+3) GET	/api/categories/{id}	Get category by ID
+   
+4) PUT	/api/categories/{id}	Update category by ID
+   
+5) DELETE	/api/categories/{id}	Delete category by ID
+
+   
 Sample JSON for Creating/Updating Category
 json
-Copy code
+
 {
   "name": "Electronics"
 }
-2. Product APIs
+
+### Product APIs ###
+
 Method	Endpoint	Description
-GET	/api/products?page={page}	Get paginated list of products
-POST	/api/products	Create a new product
-GET	/api/products/{id}	Get product by ID
-PUT	/api/products/{id}	Update product by ID
-DELETE	/api/products/{id}	Delete product by ID
+
+1) GET	/api/products?page={page}	Get paginated list of products
+   
+2) POST	/api/products	Create a new product
+   
+3) GET	/api/products/{id}	Get product by ID
+   
+4) PUT	/api/products/{id}	Update product by ID
+   
+5) DELETE	/api/products/{id}	Delete product by ID
+   
 Sample JSON for Creating/Updating Product
 json
-Copy code
+
 {
   "name": "Laptop",
   "description": "A powerful laptop",
@@ -44,5 +58,25 @@ Copy code
     "id": 1
   }
 }
-Note: The category field expects an object with the id of an existing category. This establishes the relationship between the product and its category.
+
+### Details of Key Components ###
+
+1) Category Entity: Represents a category with fields id, name, and a one-to-many relationship with products.
+   
+2) Product Entity: Represents a product with fields id, name, description, price, and a many-to-one relationship with category.
+   
+3) CategoryService and ProductService: Services contain business logic and interact with the repositories for data operations.
+   
+4) CategoryController and ProductController: Expose RESTful endpoints for performing CRUD operations on categories and products.
+
+### Postman Instructions ###
+
+1) Open Postman and create a new collection.
+
+2) Add requests for each API endpoint described above, setting the appropriate HTTP method (GET, POST, PUT, DELETE) and JSON payload.
+   
+3) For GET and DELETE requests, simply enter the endpoint and click Send.
+   
+4) For POST and PUT requests:  Select Body -> Raw -> JSON to enter the JSON payload.
+
 
